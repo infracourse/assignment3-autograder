@@ -10,7 +10,7 @@ main := {
 # check that two AWS::Lambda::Function resources are defined
 fail contains msg if {
 	functions := [fn | fn := input.Resources[_]; fn.Type == "AWS::Lambda::Function"]
-	print(count(functions))
+	count(functions) != 5
 
 	msg := "Incorrect number of Lambda functions defined (should be 5: your Lambda as well as some other implicit resources)"
 }
